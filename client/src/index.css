@@ -1,0 +1,42 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  color: white;
+}
+
+/* 3D Card */
+.card-3d {
+  transform: perspective(1000px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.card-3d:hover {
+  transform: scale(1.05) rotateX(0deg) rotateY(0deg);
+}
+
+/* Buttons */
+.btn-custom {
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-3d {
+    transform: none;
+  }
+
+  .glass {
+    padding: 20px;
+  }
+}
