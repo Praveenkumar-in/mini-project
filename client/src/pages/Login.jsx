@@ -6,7 +6,7 @@ function Login() {
 
   const login = async () => {
     const res = await API.post("/auth/login", data);
-
+console.log("login",login)
 
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("role", res.data.role);
