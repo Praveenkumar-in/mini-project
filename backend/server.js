@@ -8,7 +8,8 @@ const complaintRoutes = require("./routes/complaintRoutes");
 const app = express();
 
 app.use(cors({
-  origin:"*"
+  origin:"https://mini-project-omega-mauve.vercel.app",
+  credentials: true
 }));
 app.use(express.json());
 
