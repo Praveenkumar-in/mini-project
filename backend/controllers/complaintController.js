@@ -15,7 +15,28 @@ console.log(issue_type,"error",description)
 };
 
 // Student: View own complaints
+// exports.getMyComplaints = (req, res) => {
+//   db.query(
+//     `SELECT *,
+//     CASE
+//       WHEN issue_type IN ('Water', 'Electricity') THEN 'High'
+//       WHEN issue_type = 'WiFi' THEN 'Medium'
+//       ELSE 'Low'
+//     END AS priority
+//     FROM complaints WHERE user_id = ?`,
+//     [req.user.id],
+//     (err, result) => {
+//       if (err) return res.status(500).json(err);
+//       res.json(result);
+//     }
+//   );
+// };
+
 exports.getMyComplaints = (req, res) => {
+  if (!req.user) {
+    return res.status(401).json("Unauthorized ❌");
+  }
+
   db.query(
     `SELECT *,
     CASE
@@ -26,12 +47,14 @@ exports.getMyComplaints = (req, res) => {
     FROM complaints WHERE user_id = ?`,
     [req.user.id],
     (err, result) => {
-      if (err) return res.status(500).json(err);
+      if (err) {
+        console.log("DB ERROR:", err);
+        return res.status(500).json(err);
+      }
       res.json(result);
     }
   );
 };
-
 // Admin: Get all complaints
 exports.getAllComplaints = (req, res) => {
   db.query(
