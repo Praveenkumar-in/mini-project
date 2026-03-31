@@ -9,7 +9,7 @@ exports.verifyToken = (req, res, next) => {
     if (err) return res.status(401).json("Invalid token");
 console.log("jwt,",JWT_SECRET)
     req.user = decoded;
-    nex,t();
+    next();
   });
 };
 
