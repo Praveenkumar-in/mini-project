@@ -14,7 +14,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options("*", cors()); // 🔥 VERY IMPORTANT
+app.options("/*", cors()); // 🔥 VERY IMPORTANT
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
