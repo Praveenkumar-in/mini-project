@@ -7,12 +7,14 @@ const complaintRoutes = require("./routes/complaintRoutes");
 
 const app = express();
 
-
 app.use(cors({
   origin: "https://mini-project-omega-mauve.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+
+app.options("*", cors()); // 🔥 VERY IMPORTANT
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
